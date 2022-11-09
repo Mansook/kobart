@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from models import summary
+from models import summary, wordrank
 
 app = Flask(__name__)
 
@@ -12,9 +12,13 @@ def test():
     if request.method == 'POST':
         lists = request.args['article']
         text = lists.replace('\n', ' ')
-        res = summary(text)
-        print(res)
-        return jsonify(res)
+        res_summary = summary(text)
+        res_keywords = wordrank(text)
+        data = {
+            "Summary": res_summary,
+            "Keywords": res_keywords
+        }
+        return jsonify(data)
 
 if __name__ == '__main__':
     app.run()

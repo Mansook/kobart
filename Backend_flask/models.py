@@ -1,10 +1,12 @@
 import numpy
 import torch
+import pandas as pd
 from transformers import PreTrainedTokenizerFast
 from transformers import BartForConditionalGeneration
 tokenizer = PreTrainedTokenizerFast.from_pretrained('gogamza/kobart-base-v1')
-# model = BartForConditionalGeneration.from_pretrained('./junseo_kobart/kobart_summary_epoch_06')
-model = BartForConditionalGeneration.from_pretrained('gogamza/kobart-base-v1')
+model = BartForConditionalGeneration.from_pretrained('./junseo_kobart/kobart_summary_epoch_06')
+# model = BartForConditionalGeneration.from_pretrained('gogamza/kobart-base-v1')
+from krwordrank.sentence import summarize_with_sentences
 
 # text = """
 # 블라디미르 푸틴 러시아 대통령이 19일(현지시간) 우크라이나 내 점령지 4개 지역에 계엄령을 선포했다고 타스, 스푸트니크 통신이 보도했다.
@@ -15,6 +17,11 @@ model = BartForConditionalGeneration.from_pretrained('gogamza/kobart-base-v1')
 # 러시아는 최근 남부 헤르손과 도네츠크에서 우크라이나군의 영토 수복 공세에 고전하고 있다. 헤르손에서는 6만 명 규모의 주민 대피가 시작됐다.
 # """
 
+
+### 불용어 가져오기
+stop_words = pd.read_csv("./krwordrank/불용어.csv")
+data_stop = list(stop_words["stop_words"])
+
 def summary(text):
     text = text.replace('\n', ' ')
 
@@ -24,3 +31,27 @@ def summary(text):
     summary_ids = model.generate(torch.tensor([input_ids]),  num_beams=10,  max_length=1000,  eos_token_id=1)
     result = tokenizer.decode(summary_ids.squeeze().tolist(), skip_special_tokens=True)
     return result
+
+def wordrank(data):
+    try:
+        test = list()
+        test.append(data)
+        texts = test
+
+        penalty = lambda x:0 if (25 <= len(x) <= 80) else 1
+        stopwords = list(data_stop)
+
+        keywords, sents = summarize_with_sentences(
+            texts,
+            penalty=penalty,
+            stopwords = stopwords,
+            diversity=0.65,
+            num_keywords=10,
+            num_keysents=10,
+            verbose=False
+        )
+        return list(keywords.keys())
+    except: 
+        pass
+    
+    

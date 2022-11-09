@@ -1,4 +1,3 @@
-const { default: client } = require("../client");
+const { default: client } = require("./client");
 
-export const readArticles = ({ page, limit = 10 }) =>
-  client.get(`article/post?page=${page}&limit=${limit}`);
+export const readArticles = () => client.post("article/post_all");

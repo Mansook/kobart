@@ -37,8 +37,8 @@ const Article_schema = mongoose.Schema({
       default: null
     }, // 요약본을 딥 서버에서 돌린건데 required true 하면 입력시에 동시에 입력 안한다고 에러를 출력할듯??
     keywords : {
-      type: "String",
-      required: true
+      type: [String],
+      default: null
     }
 })
 
