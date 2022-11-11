@@ -257,6 +257,7 @@ app.get("/article/api/users/auth", auth ,(req, res) => { //auth 라는 middlewar
       name : req.user.name,
       lastname: req.user.lastname,
       role : req.user.role,
+      company: req.user.company,
       image: req.user.image
     })
 })
