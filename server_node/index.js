@@ -199,7 +199,7 @@ app.post('/article/api/users/register', (req, res) => { //라우트 제작 완�
 
 
 // // 로그인 했을 때, 기업칸이 비어있으면, 선택하는 화면 보이기
-app.post("/article/api/users/company", (req, res)=> {
+app.post("/article/api/users/select", (req, res)=> {
     //요청된 이메일을 데이터베이스에서 있는지 찾기
     User.updateOne({email: req.body.email}, {$set: {company: req.body.company}}, (err, user) => {
         if(err){
