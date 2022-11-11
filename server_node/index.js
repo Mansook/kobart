@@ -196,6 +196,29 @@ app.post('/article/api/users/register', (req, res) => { //라우트 제작 완�
     }) //몽고db method
   })
 
+
+
+// // 로그인 했을 때, 기업칸이 비어있으면, 선택하는 화면 보이기
+app.post("/article/api/users/company", (req, res)=> {
+    //요청된 이메일을 데이터베이스에서 있는지 찾기
+    User.updateOne({email: req.body.email}, {$set: {company: req.body.company}}, (err, user) => {
+        if(err){
+            return res.json({
+                Success: false,
+                message: "회사 정보 업데이트가 실패했습니다."
+            })
+        }
+        else{
+            return res.json({
+                Success : true,
+                message: "회사 업데이트 성공했습니다."
+            })
+        }
+    })
+})
+
+
+
 //login api 제작
 app.post('/article/api/users/login', (req, res) => {
     //요청된 이메일을 데이터베이스에서 있는지 찾기
@@ -215,7 +238,7 @@ app.post('/article/api/users/login', (req, res) => {
             //토큰을 저장한다. 어디에?? -> 쿠키, 로컬 스토리지, 세션 등등... -> 여기서는 쿠키에 진행
             res.cookie("x_auth", user.token)
             .status(200)
-            .json({loginSuccess: true, userId: user._id});})
+            .json({loginSuccess: true, Data:user});})
         })
     })
 })

@@ -40,11 +40,9 @@ const userSchema = mongoose.Schema({
         type : [String],
         default: null
     }
-        
-    
-
-
 })
+
+
 //save 전에 무엇인가를 하겠다. -> mongoose 의 영향
 // 다 끝나면 다시 index.js 내에 있는 route로 간다.
 userSchema.pre('save' , function(next){
