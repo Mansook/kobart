@@ -2,7 +2,6 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 
 const Article = () => {
-  //console.log(article);
   const { state } = useLocation();
   const {
     Date,

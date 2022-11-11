@@ -35,7 +35,13 @@ const userSchema = mongoose.Schema({
     },
     tokenExp:{
         type: Number
+    },
+    company: { // 자기가 선호하는 기업 선택
+        type : [String],
+        default: null
     }
+        
+    
 
 
 })
