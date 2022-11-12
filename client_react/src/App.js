@@ -5,6 +5,7 @@ import LoginContainer from "./container/auth/LoginContainer";
 import ArticleListContainer from "./container/articles/ArticleListContainer";
 import RegisterContainer from "./container/auth/RegisterContainer";
 import Article from "./components/articles/Article";
+import { SelectFomContainer } from "./container/selection/SelectFormContainer";
 
 const App = () => {
   return (
