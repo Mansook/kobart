@@ -1,0 +1,16 @@
+.form_style{
+    margin-bottom: 10px;
+    border: 1px solid gray;
+}
+.input_name{
+    text-align: left;
+    margin-bottom: 10px;
+}
+.login_register_link{
+    margin-top: 10px;
+}
+/* .auth_main{
+    text-align: left;
+} */
+
+

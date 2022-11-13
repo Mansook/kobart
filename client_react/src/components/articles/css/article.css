@@ -1,0 +1,12 @@
+.article_box{
+    border-bottom: 1px solid gray;
+    text-align: left;
+}
+
+.article_box_reporter{
+    text-align: left;
+}
+.article_main{
+    /* border: 0.5px solid black; */
+    padding: 0.5cm;
+}
