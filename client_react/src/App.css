@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.main_box {
+  text-align: center;
+  /* 여기에 반응형 생성 */
+}

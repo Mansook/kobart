@@ -6,10 +6,11 @@ import ArticleListContainer from "./container/articles/ArticleListContainer";
 import RegisterContainer from "./container/auth/RegisterContainer";
 import Article from "./components/articles/Article";
 import { SelectFomContainer } from "./container/selection/SelectFormContainer";
-
+// css 적용하기
+import "./App.css";
 const App = () => {
   return (
-    <div>
+    <div className="main_box">
       <div>헤더</div>
       <Routes>
         <Route path="/login" element={<LoginContainer />} />
