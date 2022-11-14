@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { selectCompany } from "../../lib/api/select/select";
 import { companies } from "../../source/company/company";
 
 const FormBox = ({ company, onClick }) => {
@@ -16,7 +17,6 @@ const FormBox = ({ company, onClick }) => {
       onClick={() => {
         setToggle(!toggle);
         onClick(company);
-        console.log("ㅋㅋ");
       }}
     >
       {company}
@@ -24,19 +24,13 @@ const FormBox = ({ company, onClick }) => {
   );
 };
 
-export const SelectForm = ({ onSubmit }) => {
-  const [select, setSelect] = useState([]);
-
-  const onClick = (company) => {
-    setSelect([...select, company]);
-  };
-
+export const SelectForm = ({ onClick, onSubmit }) => {
   return (
     <div>
       {companies.map((c) => (
         <FormBox key={c} company={c} onClick={onClick} />
       ))}
-      <button onClick={() => onSubmit(select)}>제출</button>
+      <button onClick={onSubmit}>제출</button>
     </div>
   );
 };

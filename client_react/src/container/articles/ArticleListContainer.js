@@ -5,8 +5,7 @@ import { loadList, selectArticleList } from "../../modules/slices/articleList";
 import { selectLoading } from "../../modules/slices/loading";
 import qs from "qs";
 import { useParams, useSearchParams } from "react-router-dom";
-import { selectUserData } from "../../modules/slices/auth";
-import { SelectFomContainer } from "../selection/SelectFormContainer";
+
 const ArticleListContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -15,8 +14,7 @@ const ArticleListContainer = () => {
 
   const loading = useSelector(selectLoading);
   const list = useSelector(selectArticleList);
-  const Data = useSelector(selectUserData);
-  const { _id, email, company } = Data.Data;
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,9 +26,6 @@ const ArticleListContainer = () => {
     );
   }, []);
 
-  if (company.length == 0) {
-    return <SelectFomContainer _id={_id} />;
-  }
   return <ArticleList loading={loading} list={list} />;
 };
 

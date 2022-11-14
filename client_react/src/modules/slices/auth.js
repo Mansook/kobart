@@ -36,6 +36,7 @@ export const authSlice = createSlice({
   reducers: {
     initialize: (state, action) => ({
       ...state,
+      userData: action.payload,
     }),
     inputData: (state, action) => {
       const { form, key, value } = action.payload;

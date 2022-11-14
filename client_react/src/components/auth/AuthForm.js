@@ -1,27 +1,67 @@
 import { Link } from "react-router-dom";
-import "./css/auth.css"
+import "./css/auth.css";
+import StyledInput from "../commons/input";
+import StyledButton from "../commons/button";
+const InputBox = ({ children, ...props }) => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: "column",
+        justifyContent: "center",
+
+        background: "gray",
+        borderRadius: "5px",
+      }}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+const ToLink = ({ children, ...props }) => {
+  return (
+    <div
+      {...props}
+      style={{
+        color: "black",
+        fontWeight: "500",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const ErrorMessage = ({ children }) => {
+  return <div style={{ color: "red" }}>{children}</div>;
+};
+
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
   const text = type;
 
   return (
     // <div className="auth_main">
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <h3>{text}</h3>
-      <form classname = "form_style" onSubmit={onSubmit}>
-        <div>
-          <div classname = "input_name"> 아이디 </div>
-          <input
+      <form onSubmit={onSubmit}>
+        <InputBox>
+          <StyledInput
             autoComplete="username"
             name="email"
             placeholder="이메일"
             onChange={onChange}
             value={form.email}
           />
-        </div>
-        <br />
-        <div>
-          <div classname = "input_name"> 비밀번호</div>
-          <input
+          <StyledInput
             autoComplete="new-password"
             name="password"
             placeholder="비밀번호"
@@ -29,12 +69,8 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.password}
           />
-        </div>
-        <br />
-        {type === "register" && (
-          <div>
-            <div classname = "input_name"> 비밀번호 확인</div>
-            <input
+          {type === "register" && (
+            <StyledInput
               autoComplete="new-password"
               name="passwordConfirm"
               placeholder="비밀번호 확인"
@@ -42,25 +78,25 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
               onChange={onChange}
               value={form.passwordConfirm}
             />
-          </div>
-        )}
-        <br />
-        <button type="submit">제출</button>
+          )}
+        </InputBox>
+        <StyledButton type="submit">제출</StyledButton>
       </form>
-      <div classname = "login_register_link">
+
+      <ToLink>
         {type === "login" ? (
           <Link to="/register">회원가입</Link>
         ) : (
           <Link to="/login">로그인</Link>
         )}
-        <p
-          style={{
-            color: "red",
-          }}
-        >
-          {error}
-        </p>
-      </div>
+      </ToLink>
+      <ErrorMessage
+        style={{
+          color: "red",
+        }}
+      >
+        {error}
+      </ErrorMessage>
     </div>
   );
 };
