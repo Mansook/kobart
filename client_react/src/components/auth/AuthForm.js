@@ -11,8 +11,8 @@ const InputBox = ({ children, ...props }) => {
         flexDirection: "column",
         justifyContent: "center",
 
-        background: "gray",
-        borderRadius: "5px",
+        // background: "gray",
+        // borderRadius: "5px",
       }}
       {...props}
     >
@@ -49,11 +49,15 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        textAlign: "center"
       }}
     >
       <h3>{text}</h3>
+      
       <form onSubmit={onSubmit}>
+        
         <InputBox>
+          <div>아이디: </div>
           <StyledInput
             autoComplete="username"
             name="email"
@@ -61,6 +65,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.email}
           />
+          <div>비밀번호: </div>
           <StyledInput
             autoComplete="new-password"
             name="password"
@@ -69,15 +74,19 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.password}
           />
+          
           {type === "register" && (
-            <StyledInput
-              autoComplete="new-password"
-              name="passwordConfirm"
-              placeholder="비밀번호 확인"
-              type="password"
-              onChange={onChange}
-              value={form.passwordConfirm}
-            />
+            <div>
+              <div>비밀번호확인: </div>
+              <StyledInput
+                autoComplete="new-password"
+                name="passwordConfirm"
+                placeholder="비밀번호 확인"
+                type="password"
+                onChange={onChange}
+                value={form.passwordConfirm}
+              />
+            </div>
           )}
         </InputBox>
         <StyledButton type="submit">제출</StyledButton>

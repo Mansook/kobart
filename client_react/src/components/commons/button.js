@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   border-radius: 5px;
-  border: 2px solid pink;
+  border: 1px solid black;
   height: 30px;
   width: 60px;
 
@@ -12,7 +12,7 @@ export const StyledButton = styled.button`
 
   &:hover {
     cursor: pointer;
-    background-color: gray;
+    // background-color: gray;
   }
 `;
 
