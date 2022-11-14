@@ -27,8 +27,8 @@ export function* authSaga() {
 export const authSlice = createSlice({
   name: "user",
   initialState: {
-    error: false,
-    user: [],
+    error: "",
+    user: null,
     register: {
       name: "",
       email: "",
@@ -67,12 +67,19 @@ export const authSlice = createSlice({
     }),
     registerfailure: (state, action) => {},
 
-    login: (state, action) => {},
-    loginsuccess: (state, action) => (
-      (state.user = action.payload.Data),
-      localStorage.setItem("user", JSON.stringify(action.payload.Data))
-    ),
-    //({ ...state, user: action.payload.Data }),
+    login: (state, action) => {
+      state.error = "";
+    },
+    loginsuccess: (state, action) => {
+      const success = action.payload.loginSuccess;
+      if (success) {
+        state.user = action.payload.Data;
+        localStorage.setItem("user", JSON.stringify(action.payload.Data));
+      } else {
+        state.error = action.payload.message;
+      }
+    },
+
     loginfailure: (state, action) => {},
 
     loadList: (state, action) => {},
@@ -112,6 +119,7 @@ export const {
   checkfailure,
   logout,
 } = authSlice.actions;
+export const selectError = (state) => state.user.error;
 export const selectUser = (state) => state.user.user;
 export const selectLoginInput = (state) => state.user.login;
 export const selectRegisterInput = (state) => state.user.register;

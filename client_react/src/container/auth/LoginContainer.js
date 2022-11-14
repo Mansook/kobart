@@ -8,11 +8,13 @@ import {
   login,
   selectLoginInput,
   selectUser,
+  selectError,
 } from "../../modules/slices/auth";
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
   const userData = useSelector(selectUser);
+  const error = useSelector(selectError) || "";
   const form = useSelector(selectLoginInput);
   const navigate = useNavigate();
 
@@ -26,7 +28,6 @@ const LoginContainer = () => {
     e.preventDefault();
     const { email, password } = form;
     dispatch(login({ email, password }));
-    navigate("/post");
   };
 
   const onChange = (e) => {
@@ -46,7 +47,7 @@ const LoginContainer = () => {
       form={form}
       onSubmit={onSubmit}
       onChange={onChange}
-      error=""
+      error={error}
     />
   );
 };

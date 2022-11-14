@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./css/auth.css";
 import StyledInput from "../commons/input";
 import StyledButton from "../commons/button";
@@ -40,6 +40,7 @@ const ErrorMessage = ({ children }) => {
 };
 
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
+  const navigate = useNavigate();
   const text = type;
 
   return (
@@ -49,13 +50,12 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        textAlign: "center"
+        textAlign: "center",
       }}
     >
       <h3>{text}</h3>
-      
+
       <form onSubmit={onSubmit}>
-        
         <InputBox>
           <div>아이디: </div>
           <StyledInput
@@ -74,7 +74,7 @@ const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
             onChange={onChange}
             value={form.password}
           />
-          
+
           {type === "register" && (
             <div>
               <div>비밀번호확인: </div>
