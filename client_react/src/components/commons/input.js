@@ -1,8 +1,8 @@
 import styled from "styled-components";
 const Input = styled.input`
   background: white;
-  width: 180px;
   height: 40px;
+  width: 180px;
   border-radius: 5px;
   border: 1px solid black;
   margin: 5px;
