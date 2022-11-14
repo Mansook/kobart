@@ -3,18 +3,32 @@ import { put, takeLatest } from "redux-saga/effects";
 import * as authAPI from "../../lib/api/auth/auth";
 
 import createRequestSaga from "../../lib/createRequestSaga";
-
+import { call } from "redux-saga/effects";
 const REGISTER = "user/register";
 const LOGIN = "user/login";
+
+function* logoutSaga(action) {
+  try {
+    yield call(authAPI.logout);
+    localStorage.removeItem("user");
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 const registerSaga = createRequestSaga(REGISTER, authAPI.registerUser);
 const loginSaga = createRequestSaga(LOGIN, authAPI.loginUser);
 
+export function* authSaga() {
+  yield takeLatest(register, registerSaga);
+  yield takeLatest(login, loginSaga);
+  yield takeLatest(logout, logoutSaga);
+}
 export const authSlice = createSlice({
   name: "user",
   initialState: {
     error: false,
-    userData: [],
+    user: [],
     register: {
       name: "",
       email: "",
@@ -54,7 +68,11 @@ export const authSlice = createSlice({
     registerfailure: (state, action) => {},
 
     login: (state, action) => {},
-    loginsuccess: (state, action) => ({ ...state, userData: action.payload }),
+    loginsuccess: (state, action) => (
+      (state.user = action.payload.Data),
+      localStorage.setItem("user", JSON.stringify(action.payload.Data))
+    ),
+    //({ ...state, user: action.payload.Data }),
     loginfailure: (state, action) => {},
 
     loadList: (state, action) => {},
@@ -65,15 +83,36 @@ export const authSlice = createSlice({
     loadListfailure: (state, action) => ({
       error: true,
     }),
+    tempsetuser: (state, action) => ({
+      ...state,
+      user: action.payload,
+    }),
+
+    logout: (state, action) => ({
+      ...state,
+      login: {
+        error: "",
+        email: "",
+        password: "",
+      },
+
+      user: null,
+    }),
   },
 });
-export function* authSaga() {
-  yield takeLatest(register, registerSaga);
-  yield takeLatest(login, loginSaga);
-}
 
-export const { initialize, register, login, inputData } = authSlice.actions;
-export const selectUserData = (state) => state.user.userData;
+export const {
+  initialize,
+  register,
+  login,
+  inputData,
+  tempsetuser,
+  check,
+  checksuccess,
+  checkfailure,
+  logout,
+} = authSlice.actions;
+export const selectUser = (state) => state.user.user;
 export const selectLoginInput = (state) => state.user.login;
 export const selectRegisterInput = (state) => state.user.register;
 export default authSlice.reducer;

@@ -7,24 +7,26 @@ import {
   inputData,
   login,
   selectLoginInput,
-  selectUserData,
+  selectUser,
 } from "../../modules/slices/auth";
 
 const LoginContainer = () => {
   const dispatch = useDispatch();
-  const userData = useSelector(selectUserData);
+  const userData = useSelector(selectUser);
   const form = useSelector(selectLoginInput);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const { loginSuccess, message } = userData;
-    if (loginSuccess) navigate("/post");
-  }, [userData, navigate]);
+    if (userData !== null) {
+      navigate("/post");
+    }
+  }, [userData]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const { email, password } = form;
     dispatch(login({ email, password }));
+    navigate("/post");
   };
 
   const onChange = (e) => {
@@ -37,13 +39,14 @@ const LoginContainer = () => {
       })
     );
   };
+
   return (
     <AuthForm
       type="login"
       form={form}
       onSubmit={onSubmit}
       onChange={onChange}
-      error={userData.message}
+      error=""
     />
   );
 };

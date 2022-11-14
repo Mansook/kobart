@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { store } from "./store/config";
-import { tempsetuser, check } from "./modules/slices/user";
+import { tempsetuser, check } from "./modules/slices/auth";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 function loadUser() {
