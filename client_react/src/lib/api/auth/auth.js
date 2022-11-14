@@ -12,7 +12,6 @@ export const loginUser = ({ email, password }) =>
     password: password,
   });
 
-export const logout = () =>
-  client.get(`/article/api/users/logout`).then((c) => console.log(c));
+export const logout = () => client.get(`/article/api/users/logout`);
 
 export const check = () => client.post(`article/api/users/check`);

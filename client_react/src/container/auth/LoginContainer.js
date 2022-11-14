@@ -20,7 +20,9 @@ const LoginContainer = () => {
 
   useEffect(() => {
     if (userData !== null) {
-      navigate("/post");
+      if (userData.company.length === 0) {
+        navigate("/post/selection", { state: userData._id });
+      } else navigate("/post");
     }
   }, [userData]);
 
