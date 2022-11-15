@@ -26,10 +26,33 @@ const HeadLine = ({ article }) => {
     </div>
   );
 };
+const butNum = (n) => {
+  return (
+    <div
+      style={{
+        cursor: "pointer",
+        color: "blue",
+      }}
+    >
+      {n}
+    </div>
+  );
+};
 
 const ArticleList = ({ loading, list }) => {
-  const { data } = list;
-  return <List data={data} />;
+  const { data, limit, maxPage, success } = list;
+  const createPagenation = (n) => {
+    for (var i = 1; i <= n; i++) {
+      butNum(i);
+    }
+  };
+  if (loading) return <div>로딩중</div>;
+  else
+    return (
+      <div>
+        <List data={data} />
+      </div>
+    );
 };
 
 export default ArticleList;
