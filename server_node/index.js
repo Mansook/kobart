@@ -106,6 +106,54 @@ app.post("/article/write", (req, res) => {
     // })
 });
 
+
+// // 로그인 했을 때, 기업칸이 비어있으면, 선택하는 화면 보이기
+app.patch("/article/api/users/select", (req, res)=> {
+    console.log(req.body.company)
+    const recommend_article = (callback) => {
+        const options = {
+            method: "POST",
+            url: "http://127.0.0.1:5000/recommend",
+            qs:req.body.company
+        }
+        request(options, function(err, res, body){
+            callback(undefined, {
+                result: body
+            });
+        });
+    }
+    // 딥러닝 서버 연동 함수 실행 -> DB에 저장까지
+    recommend_article((err, {result} = {})=>{
+        if(err){
+            console.log("error!!!");
+            result.send({
+                message: "fail",
+                status: "fail"
+            });
+        }
+        // 성공햇을 때
+        // console.log(json)
+        console.log(result)
+        const json = JSON.parse(result);
+        console.log(json)
+        recommendation = json
+        // console.log(recommendation)
+        User.updateOne({_id: req.body._id}, {$set: {company: req.body.company, recommendation: recommendation}}, (err, user) => {
+            if(err){
+                return res.json({
+                    Success: false,
+                    message: "회사 정보 업데이트 및 추천 실패"
+                })
+            }
+            else{
+                return res.json({
+                    Success : true,
+                    message: "회사 정보 업데이트 및 추천 성공"
+                })
+            }
+        }) 
+    });
+})
 /// 이제는 DB 내용들을 다 던져주는 것을 하면 될듯???
 // const { Article } = require('./models/Article'); // Article DB 모델을 사용한다.
 
@@ -122,8 +170,6 @@ app.post("/article/write", (req, res) => {
 
 // 전체를 출력해주는 api
 app.post("/article/post_all", (req, res) => {
-
-
     // const total = await Post.countDocument({}); // 총 게시글 수 세기
     // const posts = await Post.find({}) 
     // .sort({ createdAt: -1 }) // createdAt는 timestamps로 생성한 시간을 역순으로 정렬 === 데이터를 최근 순으로 정렬 
@@ -146,6 +192,8 @@ app.post("/article/post_all", (req, res) => {
         }
     })
 })
+
+
 
 
 // Index
@@ -182,6 +230,33 @@ app.get('/article/post', async function(req, res){ // 1: await 키워드를 사�
     }
 });
 
+
+//추천 기사만 출력
+// app.post("/article/post_recommend", (req, res) => {
+
+//     const user = User.find({_id: req.body._id})
+//     // list_id_1 = users.recommendation[0]
+//     // list_id_2 = users.recommendation[1]
+//     // list_id_3 = users.recommendation[2]
+//     console.log(user)
+
+
+//     // Article.find({_id: list_id_1,list_id_2,list_id_3},(error, article_api) => {
+//     //     //에러가 발생할 경우
+//     //     if(error){
+//     //         console.log(error);
+//     //         return res.send({success : false, err})
+//     //     //에러가 발생 안할 경우에
+//     //     }else{
+//     //         data = article_api; //api 데이터를 data 변수에 담는다.
+//     //         res.status(200).json({ // 에러가 발생 안했으므로. json으로 던져준다.
+//     //             success: true,
+//     //             data: data
+//     //         });
+//     //     }
+//     // })
+// })
+
 // register api 제작
 app.post('/article/api/users/register', (req, res) => { //라우트 제작 완료
     //회원가입 할 때 필요한 정보들을 client 에서 가져오면
@@ -195,29 +270,6 @@ app.post('/article/api/users/register', (req, res) => { //라우트 제작 완�
       })
     }) //몽고db method
   })
-
-
-
-// // 로그인 했을 때, 기업칸이 비어있으면, 선택하는 화면 보이기
-app.patch("/article/api/users/select", (req, res)=> {
-    //요청된 이메일을 데이터베이스에서 있는지 찾기
-    User.updateOne({_id: req.body._id}, {$set: {company: req.body.company}}, (err, user) => {
-        if(err){
-            return res.json({
-                Success: false,
-                message: "회사 정보 업데이트가 실패했습니다."
-            })
-        }
-        else{
-            return res.json({
-                Success : true,
-                message: "회사 업데이트 성공했습니다."
-            })
-        }
-    })
-})
-
-
 
 //login api 제작
 app.post('/article/api/users/login', (req, res) => {

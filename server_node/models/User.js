@@ -39,6 +39,10 @@ const userSchema = mongoose.Schema({
     company: { // 자기가 선호하는 기업 선택
         type : [String],
         default: null
+    },
+    recommendation:{
+        type : [String],
+        default: null
     }
 })
 
