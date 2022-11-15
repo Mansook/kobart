@@ -4,9 +4,17 @@
 }
 
 .article_box_reporter{
+    margin-top: 10px;
+    border-top: 1px solid gray;
     text-align: left;
 }
 .article_main{
     /* border: 0.5px solid black; */
     padding: 0.5cm;
+}
+
+.article_main_image{
+    text-align: center;
+    border-bottom: 1px solid gray;
+
 }

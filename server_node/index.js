@@ -232,30 +232,24 @@ app.get('/article/post', async function(req, res){ // 1: await 키워드를 사�
 
 
 //추천 기사만 출력
-// app.post("/article/post_recommend", (req, res) => {
+app.post("/article/post_recommend", async(req,res)=> {
 
-//     const user = User.find({_id: req.body._id})
-//     // list_id_1 = users.recommendation[0]
-//     // list_id_2 = users.recommendation[1]
-//     // list_id_3 = users.recommendation[2]
-//     console.log(user)
-
-
-//     // Article.find({_id: list_id_1,list_id_2,list_id_3},(error, article_api) => {
-//     //     //에러가 발생할 경우
-//     //     if(error){
-//     //         console.log(error);
-//     //         return res.send({success : false, err})
-//     //     //에러가 발생 안할 경우에
-//     //     }else{
-//     //         data = article_api; //api 데이터를 data 변수에 담는다.
-//     //         res.status(200).json({ // 에러가 발생 안했으므로. json으로 던져준다.
-//     //             success: true,
-//     //             data: data
-//     //         });
-//     //     }
-//     // })
-// })
+    const user = await User.findOne({_id: req.body._id})
+    Article.find({_id: {$in: user.recommendation}},(error, article_api) => {
+         //에러가 발생할 경우
+        if(error){
+            console.log(error);
+            return res.send({success : false, err})
+        //에러가 발생 안할 경우에
+        }else{
+            data = article_api; //api 데이터를 data 변수에 담는다.
+            res.status(200).json({ // 에러가 발생 안했으므로. json으로 던져준다.
+                success: true,
+                data: data
+            });
+        }
+    })
+})
 
 // register api 제작
 app.post('/article/api/users/register', (req, res) => { //라우트 제작 완료

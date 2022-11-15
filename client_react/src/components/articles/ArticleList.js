@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { readArticles } from "../../lib/api/article/article";
 import Article from "./Article";
+import "./css/articlelist.css"
+
 const List = ({ data }) => {
   return data ? (
-    <div>
+    <div className="list_style">
       {data.map((c) => (
         <HeadLine key={c._id} article={c} />
       ))}

@@ -6,6 +6,7 @@ const Article = () => {
   const { state } = useLocation();
   const {
     Date,
+    image,
     article_main,
     article_name,
     article_summary,
@@ -13,14 +14,19 @@ const Article = () => {
     reporter,
     _id,
   } = state;
+  console.log(image)
 
   return (
     <div className="article_main">
       <hr/>
       <div className="article_box">제목:{article_name}</div>
-      <div className="article_box">내용:{article_main}</div>
+      <div className="article_main_image">
+      <img style = {{width: "300px"}} src={image} />
+      </div>
+      {/* <div className="article_box">내용:{article_main}</div> */}
       <div className="article_box">요약:{article_summary}</div>
-      <div className="article_box">키워드:{keywords}</div>
+      {/* <div className="article_box">키워드:{keywords}</div> */}
+      {keywords.map((c) => (<div>#{c}</div>))}
       <div className="article_box_reporter">리포터:{reporter}</div>
       <hr/>
     </div>

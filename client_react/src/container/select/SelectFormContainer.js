@@ -6,8 +6,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 const SelectFormContainer = () => {
   const [select, setSelect] = useState([]);
   const { state } = useLocation();
+  
+  // useEffect(() =>{console.log(select)},[select])
   const onClick = (company) => {
-    setSelect([...select, company]);
+    if(select.some((el) => el == company)){
+      const newArray= select.filter((note) => company !== note);
+      setSelect(newArray);
+    }
+    else{
+      setSelect([...select, company]);
+    }
   };
   const navigate = useNavigate();
 
