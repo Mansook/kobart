@@ -256,6 +256,15 @@ app.post("/article/post_recommend", async (req, res) => {
 app.post("/article/api/users/register", (req, res) => {
   //라우트 제작 완료
   //회원가입 할 때 필요한 정보들을 client 에서 가져오면
+
+  const email = req.body.email;
+  let users = User.findOne({email: email});
+  if (users){
+    return res
+    .status(400)
+    .json({errors: [{msg: "User already exists"}]});
+  }
+
   //그것들을 데이터 베이스에 넣어준다.
   const user = new User(req.body); //instance 만들기, request 에서 넘오는 정보를 가지고 User db 모델을 만든다.
   //save 전에 비밀번호를 암호화해야 한다. -> User.js 로 가서 userschema.pre method 사용
