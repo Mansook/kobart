@@ -26,6 +26,7 @@ const App = () => {
         <Route path="/post/selection" element={<SelectFormContainer />} />
         <Route path="/post/:articleId" element={<Article />} />
         <Route path="/post/recommended" element={<RecArticleListContainer />} />
+        <Route path="/post/recommended/:articleId" element={<Article />} />
       </Routes>
       <div>
         <NavBar />
