@@ -26,9 +26,7 @@ const Article = () => {
       {/* <div className="article_box">내용:{article_main}</div> */}
       <div className="article_box">요약:{article_summary}</div>
       {/* <div className="article_box">키워드:{keywords}</div> */}
-      {keywords?.keywords.map((c) => (
-        <div>#{c}</div>
-      ))}
+      {keywords !== null ? keywords.map((c) => <div>#{c}</div>) : <div />}
       <div className="article_box_reporter">리포터:{reporter}</div>
       <hr />
     </div>
