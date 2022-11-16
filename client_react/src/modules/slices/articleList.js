@@ -32,7 +32,7 @@ export const articleListSlice = createSlice({
 
     loadRecList: (state, action) => {},
     loadRecListsuccess: (state, action) => {
-      state.recList = action.payload;
+      state.recList = action.payload.data;
     },
     loadRecListfailure: (state, action) => {},
   },

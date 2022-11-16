@@ -23,7 +23,6 @@ const NavBar = () => {
       <div className="subBar">
         <div>사용자정보</div>
         <div>설정</div>
-        <LogoutContainer />
       </div>
     </nav>
   );

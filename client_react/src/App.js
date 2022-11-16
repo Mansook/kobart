@@ -16,7 +16,7 @@ const App = () => {
   return (
     <div className="main_box">
       <div>
-        <NavBar />
+        <LogoutContainer />
       </div>
       <Routes>
         <Route path="/" element={<LoginContainer />} />
@@ -27,7 +27,9 @@ const App = () => {
         <Route path="/post/:articleId" element={<Article />} />
         <Route path="/post/recommended" element={<RecArticleListContainer />} />
       </Routes>
-      <div>푸터</div>
+      <div>
+        <NavBar />
+      </div>
     </div>
   );
 };
