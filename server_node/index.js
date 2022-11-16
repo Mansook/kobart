@@ -56,7 +56,7 @@ app.post("/article/write", (req, res) => {
     const summarize_article = (callback) => {
         const options = {
             method: "POST",
-            url: "http://127.0.0.1:5000/test",
+            url: "http://211.201.200.70:1127/test",
             qs:{
                 article : article.article_main
             }
@@ -64,7 +64,7 @@ app.post("/article/write", (req, res) => {
         request(options, function(err, res, body){
             callback(undefined, {
                 result: body
-            });
+            });  
         });
     }
 
@@ -113,7 +113,7 @@ app.patch("/article/api/users/select", (req, res)=> {
     const recommend_article = (callback) => {
         const options = {
             method: "POST",
-            url: "http://127.0.0.1:5000/recommend",
+            url: "http://211.201.200.70:1127/recommend",
             qs:req.body.company
         }
         request(options, function(err, res, body){
