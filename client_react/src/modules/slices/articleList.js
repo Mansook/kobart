@@ -17,7 +17,7 @@ export const articleListSlice = createSlice({
   reducers: {
     loadList: (state, action) => {},
     loadListsuccess: (state, action) => ({
-      list: action.payload,
+      list: action.payload.data,
       error: false,
     }),
     loadListfailure: (state, action) => ({

@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { put, takeLatest } from "redux-saga/effects";
 import * as authAPI from "../../lib/api/auth/auth";
-
+import * as selectAPI from "../../lib/api/select/select";
 import createRequestSaga from "../../lib/createRequestSaga";
 import { call } from "redux-saga/effects";
 const REGISTER = "user/register";
 const LOGIN = "user/login";
-
+const SELECT = "user/selectCompany";
 function* logoutSaga(action) {
   try {
     yield call(authAPI.logout);
@@ -18,11 +18,12 @@ function* logoutSaga(action) {
 
 const registerSaga = createRequestSaga(REGISTER, authAPI.registerUser);
 const loginSaga = createRequestSaga(LOGIN, authAPI.loginUser);
-
+const selectSaga = createRequestSaga(SELECT, selectAPI.selectCompany);
 export function* authSaga() {
   yield takeLatest(register, registerSaga);
   yield takeLatest(login, loginSaga);
   yield takeLatest(logout, logoutSaga);
+  yield takeLatest(selectCompany, selectSaga);
 }
 export const authSlice = createSlice({
   name: "user",
@@ -105,6 +106,22 @@ export const authSlice = createSlice({
 
       user: null,
     }),
+    selectCompany: (state, action) => {
+      state.user.company = action.payload.company;
+      const loc = Object.assign(JSON.parse(localStorage.getItem("user")), {
+        company: action.payload.company,
+      });
+      localStorage.setItem("user", JSON.stringify(loc));
+    },
+    selectCompanysuccess: (state, action) => {
+      state.user.recommendation = action.payload.data;
+
+      const loc = Object.assign(JSON.parse(localStorage.getItem("user")), {
+        recommendation: action.payload.data,
+      });
+      localStorage.setItem("user", JSON.stringify(loc));
+    },
+    selectCompanyfailure: (state, action) => {},
   },
 });
 
@@ -118,6 +135,9 @@ export const {
   checksuccess,
   checkfailure,
   logout,
+  selectCompany,
+  selectCompanysucceses,
+  selectCompanyfailure,
 } = authSlice.actions;
 export const selectError = (state) => state.user.error;
 export const selectUser = (state) => state.user.user;

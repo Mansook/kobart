@@ -16,6 +16,7 @@ const ArticleListContainer = () => {
   const list = useSelector(selectArticleList);
 
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(
       loadList({
@@ -28,6 +29,7 @@ const ArticleListContainer = () => {
   return (
     <div>
       <ArticleList loading={loading} list={list} />
+      <div></div>
     </div>
   );
 };

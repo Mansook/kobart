@@ -1,11 +1,11 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import "./css/article.css"
+import "./css/article.css";
 
 const Article = () => {
   const { state } = useLocation();
+
   const {
-    Date,
     image,
     article_main,
     article_name,
@@ -14,21 +14,23 @@ const Article = () => {
     reporter,
     _id,
   } = state;
-  console.log(image)
+  console.log(image);
 
   return (
     <div className="article_main">
-      <hr/>
+      <hr />
       <div className="article_box">제목:{article_name}</div>
       <div className="article_main_image">
-      <img style = {{width: "300px"}} src={image} />
+        <img style={{ width: "300px" }} src={image} />
       </div>
       {/* <div className="article_box">내용:{article_main}</div> */}
       <div className="article_box">요약:{article_summary}</div>
       {/* <div className="article_box">키워드:{keywords}</div> */}
-      {keywords.map((c) => (<div>#{c}</div>))}
+      {keywords.map((c) => (
+        <div>#{c}</div>
+      ))}
       <div className="article_box_reporter">리포터:{reporter}</div>
-      <hr/>
+      <hr />
     </div>
   );
 };
