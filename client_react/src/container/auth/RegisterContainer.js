@@ -6,6 +6,7 @@ import {
   initialize,
   inputData,
   register,
+  selectError,
   selectRegisterInput,
 } from "../../modules/slices/auth";
 
@@ -14,6 +15,7 @@ const RegisterContainer = () => {
   const form = useSelector(selectRegisterInput);
   const navigate = useNavigate();
   const [error, setError] = useState("");
+  const message = useSelector(selectError);
 
   useEffect(() => {
     dispatch(initialize());
@@ -43,12 +45,13 @@ const RegisterContainer = () => {
     }
     if (password.length < 5) {
       setError("비밀번호가 너무 짧습니다");
-
       return;
     }
-
     dispatch(register({ email: email, password: password }));
-    navigate("/login");
+    if (message) {
+      setError(message);
+      return;
+    } else navigate("/login");
   };
 
   return (

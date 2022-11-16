@@ -9,15 +9,14 @@ import SelectFormContainer from "./container/select/SelectFormContainer";
 // css 적용하기
 import "./App.css";
 import LogoutContainer from "./container/auth/LogoutContainer";
+import NavBar from "./components/views/NavBar/NavBar";
+import RecArticleListContainer from "./container/articles/RecArticleListContainer";
 
 const App = () => {
   return (
     <div className="main_box">
       <div>
-        <div>헤더</div>
-        <div>
-          <LogoutContainer />
-        </div>
+        <NavBar />
       </div>
       <Routes>
         <Route path="/" element={<LoginContainer />} />
@@ -26,6 +25,7 @@ const App = () => {
         <Route path="/post" element={<ArticleListContainer />} />
         <Route path="/post/selection" element={<SelectFormContainer />} />
         <Route path="/post/:articleId" element={<Article />} />
+        <Route path="/post/recommended" element={<RecArticleListContainer />} />
       </Routes>
       <div>푸터</div>
     </div>

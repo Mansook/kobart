@@ -7,6 +7,7 @@ import { call } from "redux-saga/effects";
 const REGISTER = "user/register";
 const LOGIN = "user/login";
 const SELECT = "user/selectCompany";
+
 function* logoutSaga(action) {
   try {
     yield call(authAPI.logout);
@@ -63,9 +64,13 @@ export const authSlice = createSlice({
     },
 
     register: (state, action) => {},
-    registersuccess: (state, action) => ({
-      ...state,
-    }),
+    registersuccess: (state, action) => {
+      const success = action.payload.registerSuccess;
+      if (success) {
+      } else {
+        state.error = action.payload.message;
+      }
+    },
     registerfailure: (state, action) => {},
 
     login: (state, action) => {
@@ -143,4 +148,5 @@ export const selectError = (state) => state.user.error;
 export const selectUser = (state) => state.user.user;
 export const selectLoginInput = (state) => state.user.login;
 export const selectRegisterInput = (state) => state.user.register;
+export const selectRecommendation = (state) => state.user.user.recommendation;
 export default authSlice.reducer;
