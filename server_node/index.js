@@ -253,12 +253,12 @@ app.post("/article/post_recommend", async (req, res) => {
 });
 
 // register api 제작
-app.post("/article/api/users/register", (req, res) => {
+app.post("/article/api/users/register", async(req, res) => {
   //라우트 제작 완료
   //회원가입 할 때 필요한 정보들을 client 에서 가져오면
 
   const email = req.body.email;
-  let users = User.findOne({email: email});
+  let users = await User.findOne({email: email});
   if (users){
     return res
     .status(400)
