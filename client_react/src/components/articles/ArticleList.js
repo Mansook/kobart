@@ -20,11 +20,15 @@ const HeadLine = ({ article }) => {
   const navigate = useNavigate();
   const { _id, article_name, reporter, keywords } = article;
   return (
-    <div
+    <div className="list_style_box"
       onClick={() => navigate(`${_id}`, { state: article })}
-      style={{ cursor: "pointer" }}
+      style={{ cursor: "pointer"}}
     >
-      {article_name}
+      <div style ={{"margin-top": "5px"}}>{article_name}</div>
+      <div className="separate_box">
+        <div>기자: {reporter}</div>
+        <div>날짜: {article.Date.split("T",1)} </div>
+      </div>
     </div>
   );
 };
