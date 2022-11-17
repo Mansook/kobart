@@ -12,13 +12,17 @@ import { selectLoading } from "../../modules/slices/loading";
 const RecArticleListContainer = () => {
   const user = useSelector(selectUser);
   const loading = useSelector(selectLoading);
-  const _id = user._id;
+
   const dispatch = useDispatch();
   const list = useSelector(selectRecArticleList);
+
   useEffect(() => {
-    dispatch(loadRecList({ _id: _id }));
+    if (user !== null) dispatch(loadRecList({ _id: user._id }));
   }, []);
 
+  if (user === null) {
+    return <div>로그인이 필요합니다</div>;
+  }
   if (loading) return <div>로딩중</div>;
   else return <ArticleList loading={loading} list={list} />;
 };

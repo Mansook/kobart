@@ -7,13 +7,17 @@ import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import { IoIosHome } from "react-icons/io";
 import { IoMdCreate } from "react-icons/io";
 import { IoMdThumbsUp } from "react-icons/io";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../../modules/slices/auth";
 
 const NavBar = () => {
+  const user = useSelector(selectUser);
+  console.log(user);
   return (
     <nav id="mainBar">
       <div className="subBar">
         <div className="sub_box">
-          <NavLink to="/post?page=1&limit=10">
+          <NavLink to="/">
             <IoIosHome
               style={{
                 height: "40px",
@@ -26,7 +30,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div className="sub_box">
-          <NavLink to="/post?page=1&limit=10">
+          <NavLink to="/post?page=1&limit=15">
             <RiArticleLine
               style={{
                 height: "40px",
