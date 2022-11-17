@@ -1,0 +1,25 @@
+
+.home{
+    text-align: center;
+    width:100%;
+    height: 650px;
+    /* border: 1px solid black; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.bart_logo{
+    width: 400px;
+    height: 400px;
+    background: no-repeat center/100% url(./바트심슨2.png);
+}
+
+.news_logo{
+    width: 300px;
+    height: 200px;
+    background: no-repeat center/100% url(./bart_news.png);
+}
+

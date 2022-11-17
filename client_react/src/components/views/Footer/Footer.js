@@ -5,7 +5,9 @@ function Footer() {
   return (
     <div>
       Footer
-      <StyledButton>로그아웃</StyledButton>
+      <StyledButton>
+        로그아웃
+        </StyledButton>
     </div>
   );
 }

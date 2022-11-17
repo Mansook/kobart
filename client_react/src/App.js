@@ -11,6 +11,7 @@ import "./App.css";
 import LogoutContainer from "./container/auth/LogoutContainer";
 import NavBar from "./components/views/NavBar/NavBar";
 import RecArticleListContainer from "./container/articles/RecArticleListContainer";
+import Home from "./components/home/home"
 
 const App = () => {
   return (
@@ -19,7 +20,7 @@ const App = () => {
         <LogoutContainer />
       </div>
       <Routes>
-        <Route path="/" element={<LoginContainer />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginContainer />} />
         <Route path="/register" element={<RegisterContainer />} />
         <Route path="/post" element={<ArticleListContainer />} />
