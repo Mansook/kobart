@@ -8,63 +8,61 @@ import { IoIosHome } from "react-icons/io";
 import { IoMdCreate } from "react-icons/io";
 import { IoMdThumbsUp } from "react-icons/io";
 
-
-
 const NavBar = () => {
   return (
     <nav id="mainBar">
       <div className="subBar">
         <div className="sub_box">
-          <NavLink to="/">
-          <IoIosHome
-            style={{
-              height: "40px",
-              width: "40px",
-              cursor: "pointer",
-              margin: "8px",
-              color: "black"
-            }}
-          />
-            </NavLink>
+          <NavLink to="/post?page=1&limit=10">
+            <IoIosHome
+              style={{
+                height: "40px",
+                width: "40px",
+                cursor: "pointer",
+                margin: "8px",
+                color: "black",
+              }}
+            />
+          </NavLink>
         </div>
         <div className="sub_box">
-          <NavLink to="/post">
-          <RiArticleLine
-            style={{
-              height: "40px",
-              width: "40px",
-              cursor: "pointer",
-              margin: "8px",
-              color: "black"
-            }}
-          />
-            </NavLink>
+          <NavLink to="/post?page=1&limit=10">
+            <RiArticleLine
+              style={{
+                height: "40px",
+                width: "40px",
+                cursor: "pointer",
+                margin: "8px",
+                color: "black",
+              }}
+            />
+          </NavLink>
         </div>
         <div className="sub_box">
           <NavLink to="/post/recommended">
-          <IoMdThumbsUp
-            style={{
-              height: "40px",
-              width: "40px",
-              cursor: "pointer",
-              margin: "8px",
-              color: "black"
-            }}
-          />
-            </NavLink>
+            <IoMdThumbsUp
+              style={{
+                height: "40px",
+                width: "40px",
+                cursor: "pointer",
+                margin: "8px",
+                color: "black",
+              }}
+            />
+          </NavLink>
         </div>
         <div className="sub_box_last">
           <NavLink>
-          <IoMdCreate
-            style={{
-              height: "40px",
-              width: "40px",
-              cursor: "pointer",
-              margin: "8px",
-              color: "black"
-            }}
-          />
-            </NavLink>
+            <IoMdCreate
+              style={{
+                height: "40px",
+                width: "40px",
+                cursor: "pointer",
+                margin: "8px",
+                color: "black",
+              }}
+            />
+          </NavLink>
         </div>
       </div>
       {/* <div className="subBar">

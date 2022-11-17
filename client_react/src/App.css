@@ -46,6 +46,9 @@
   border: 1px, solid, black;
 }
 .main_content {
+  width: 100%;
+
   position: absolute;
-  top: 51px;
+  top: 50px;
+  bottom: 50px;
 }

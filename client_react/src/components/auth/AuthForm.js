@@ -40,7 +40,6 @@ const ErrorMessage = ({ children }) => {
 };
 
 const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
-  const navigate = useNavigate();
   const text = type;
 
   return (

@@ -17,6 +17,7 @@ export const articleListSlice = createSlice({
   initialState: {
     list: [],
     recList: [],
+    pageLimit: null,
     error: false,
   },
 
@@ -24,6 +25,7 @@ export const articleListSlice = createSlice({
     loadList: (state, action) => {},
     loadListsuccess: (state, action) => ({
       list: action.payload.data,
+      pageLimit: action.payload.maxPage,
       error: false,
     }),
     loadListfailure: (state, action) => ({
@@ -46,4 +48,5 @@ export function* articleListSaga() {
 export const { loadList, loadRecList } = articleListSlice.actions;
 export const selectArticleList = (state) => state.articles.list;
 export const selectRecArticleList = (state) => state.articles.recList;
+export const selectPageLimit = (state) => state.articles.pageLimit;
 export default articleListSlice.reducer;

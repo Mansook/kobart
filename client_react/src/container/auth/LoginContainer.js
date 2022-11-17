@@ -44,13 +44,20 @@ const LoginContainer = () => {
   };
 
   return (
-    <AuthForm
-      type="login"
-      form={form}
-      onSubmit={onSubmit}
-      onChange={onChange}
-      error={error}
-    />
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
+      <AuthForm
+        type="login"
+        form={form}
+        onSubmit={onSubmit}
+        onChange={onChange}
+        error={error}
+      />
+    </div>
   );
 };
 export default LoginContainer;
