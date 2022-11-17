@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./css/article.css";
 
 const Article = () => {
   const { state } = useLocation();
-
+  const [toggle, setToggle] = useState(false);
   const {
     image,
     article_main,
@@ -24,7 +24,19 @@ const Article = () => {
         <img style={{ width: "300px" }} src={image} />
       </div>
       {/* <div className="article_box">내용:{article_main}</div> */}
-      <div className="article_box">요약:{article_summary}</div>
+      <div
+        className="article_box"
+        onClick={() => {
+          setToggle(!toggle);
+        }}
+      >
+        요약:{article_summary}
+      </div>
+      {toggle ? (
+        <div className="article_box">내용:{article_main}</div>
+      ) : (
+        <div />
+      )}
       {/* <div className="article_box">키워드:{keywords}</div> */}
       {keywords !== null ? keywords.map((c) => <div>#{c}</div>) : <div />}
       <div className="article_box_reporter">리포터:{reporter}</div>
