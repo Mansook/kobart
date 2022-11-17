@@ -25,7 +25,7 @@ const HeadLine = ({ article }) => {
       onClick={() => navigate(`${_id}`, { state: article })}
       style={{ cursor: "pointer" }}
     >
-      <div style={{ "margin-top": "5px" }}>{article_name}</div>
+      <div>{article_name}</div>
       <div className="separate_box">
         <div>기자: {reporter}</div>
         <div>날짜: {article.Date.split("T", 1)} </div>

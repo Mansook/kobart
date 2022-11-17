@@ -204,7 +204,7 @@ app.get("/article/post", async function (req, res) {
   var limit = Math.max(1, parseInt(req.query.limit)); // 2: Math.max함수를 사용한 이유: page, limit은 양수여야 합니다 최소 1이 되어야 함
   // 3. page, limit에 오는 경우 기본값을 설정해 줍니다. 이 값은 해당 query string이 없는 경우에도 사용됨
   page = !isNaN(page) ? page : 1; // 3
-  limit = 10; // 3
+  //limit = 10; // 3
 
   var skip = (page - 1) * limit; // 4: 무시할 게시물의 수를 담는 변수. 페이지당 10개의 게시물이 있고, 현재 3번째 페이지를 만들려면, DB에서 처음 20개의 게시물을 무시하고 21번째부터 10개의 게시물을 보여주는 것
   var count = await Article.countDocuments({}); // 5: Promise 앞에 await키워드를 사용하면, 해당 Promise가 완료될 때까지 다음 코드로 진행하지 않고 기다렸다가 해당 Promise가 완료되면 resolve된 값을 반환(return)
@@ -253,16 +253,14 @@ app.post("/article/post_recommend", async (req, res) => {
 });
 
 // register api 제작
-app.post("/article/api/users/register", async(req, res) => {
+app.post("/article/api/users/register", async (req, res) => {
   //라우트 제작 완료
   //회원가입 할 때 필요한 정보들을 client 에서 가져오면
 
   const email = req.body.email;
-  let users = await User.findOne({email: email});
-  if (users){
-    return res
-    .status(400)
-    .json({errors: [{msg: "User already exists"}]});
+  let users = await User.findOne({ email: email });
+  if (users) {
+    return res.status(400).json({ errors: [{ msg: "User already exists" }] });
   }
 
   //그것들을 데이터 베이스에 넣어준다.

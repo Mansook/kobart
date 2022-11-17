@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   line-height: 50px;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
 }
 
 .App-logo {
@@ -44,4 +44,8 @@
   height: 844;
   /* 여기에 반응형 생성 */
   border: 1px, solid, black;
+}
+.main_content {
+  position: absolute;
+  top: 51px;
 }
