@@ -22,7 +22,7 @@ const SelectFormContainer = () => {
 
   const onSubmit = (e) => {
     dispatch(selectCompany({ _id: state, company: select }));
-    navigate("/post?page=1&limit=1");
+    navigate("/post?page=1&limit=20");
   };
   return <SelectForm onClick={onClick} onSubmit={onSubmit} />;
 };
