@@ -9,6 +9,8 @@ import {
 import { selectLoading } from "../../modules/slices/loading";
 import qs from "qs";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
+import "./css/ArticleListContainer.css";
+
 
 const ArticleListContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -43,9 +45,9 @@ const ArticleListContainer = () => {
   return (
     <div>
       <ArticleList loading={loading} list={list} />
-      <div>
-        <button onClick={() => LeftPage(page, limit)}>left</button>
-        <button onClick={() => RightPage(page, limit)}>right</button>
+      <div className="page_button">
+        <div classname = "Left_button" onClick={() => LeftPage(page, limit)}>left</div>
+        <div classname = "Right_button" onClick={() => RightPage(page, limit)}>right</div>
       </div>
     </div>
   );
