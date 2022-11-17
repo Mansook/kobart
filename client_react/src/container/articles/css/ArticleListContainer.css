@@ -1,7 +1,7 @@
 .page_button {
   position: fixed;
   bottom: 45px;
-  background-color: antiquewhite;
+  background-color: rgb(215, 214, 215);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,5 +14,6 @@
   align-items: center;
   justify-content: center;
   border: 1px solid black;
+  height: 30px;
   border-radius: 4px;
 }

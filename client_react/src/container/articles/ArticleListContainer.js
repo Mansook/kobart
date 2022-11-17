@@ -45,8 +45,8 @@ const ArticleListContainer = () => {
     <div>
       <ArticleList loading={loading} list={list} />
       <div className="page_button">
-        <div onClick={() => LeftPage(page, limit)}>left</div>
-        <div onClick={() => RightPage(page, limit)}>right</div>
+        <div onClick={() => LeftPage(page, limit)}>이전</div>
+        <div onClick={() => RightPage(page, limit)}>다음</div>
       </div>
     </div>
   );
