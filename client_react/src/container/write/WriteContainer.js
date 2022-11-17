@@ -24,7 +24,6 @@ const WriteContainer = () => {
   const reporter = post.reporter;
 
   const user = useSelector(selectUser);
-  console.log(user);
   const loading = useSelector(selectLoading);
   const onChangeField = useCallback(
     (payload) => dispatch(changefield(payload)),
@@ -36,8 +35,8 @@ const WriteContainer = () => {
       writepost({
         article_name: title,
         reporter: reporter,
-        Date: Date.now(),
-        image: "",
+        Date: date,
+        image: image,
         article_main: body,
       })
     );
