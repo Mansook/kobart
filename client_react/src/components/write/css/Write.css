@@ -1,0 +1,7 @@
+.write_grid{
+    height: 100%;
+    width: 70%;
+    grid-template-rows: 1fr 4fr 1fr;
+    display: grid;
+
+}
