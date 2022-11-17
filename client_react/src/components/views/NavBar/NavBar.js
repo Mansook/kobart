@@ -20,10 +20,10 @@ const NavBar = () => {
           <NavLink to="/">
             <IoIosHome
               style={{
-                height: "40px",
-                width: "40px",
+                height: "35px",
+                width: "35px",
                 cursor: "pointer",
-                margin: "8px",
+                margin: "4px",
                 color: "black",
               }}
             />
@@ -33,10 +33,10 @@ const NavBar = () => {
           <NavLink to="/post?page=1&limit=15">
             <RiArticleLine
               style={{
-                height: "40px",
+                height: "35px",
                 width: "40px",
                 cursor: "pointer",
-                margin: "8px",
+                margin: "4px",
                 color: "black",
               }}
             />
@@ -46,10 +46,10 @@ const NavBar = () => {
           <NavLink to="/post/recommended">
             <IoMdThumbsUp
               style={{
-                height: "40px",
-                width: "40px",
+                height: "35px",
+                width: "35px",
                 cursor: "pointer",
-                margin: "8px",
+                margin: "4px",
                 color: "black",
               }}
             />
@@ -59,10 +59,10 @@ const NavBar = () => {
           <NavLink to="/post/write">
             <IoMdCreate
               style={{
-                height: "40px",
-                width: "40px",
+                height: "35px",
+                width: "35px",
                 cursor: "pointer",
-                margin: "8px",
+                margin: "4px",
                 color: "black",
               }}
             />

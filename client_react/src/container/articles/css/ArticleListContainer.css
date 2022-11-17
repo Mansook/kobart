@@ -1,10 +1,11 @@
 .page_button {
   position: fixed;
-  bottom: 59.5px;
-
-  width: 100%;
+  bottom: 45px;
   background-color: antiquewhite;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   flex: 1;
 }
 .page_button > div {
@@ -14,12 +15,4 @@
   justify-content: center;
   border: 1px solid black;
   border-radius: 4px;
-}
-
-.Left_button {
-  width: 100px;
-}
-
-.Right_button {
-  width: 100px;
 }

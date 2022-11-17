@@ -19,6 +19,8 @@ const WriteContainer = () => {
 
   const title = post.title;
   const body = post.body;
+  const date = post.date;
+  const image = post.image;
   const reporter = post.reporter;
 
   const user = useSelector(selectUser);
@@ -55,6 +57,8 @@ const WriteContainer = () => {
         onSubmit={onSubmit}
         title={title}
         body={body}
+        date={date}
+        image={image}
         loading={loading}
       />
     );

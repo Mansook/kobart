@@ -11,7 +11,6 @@ import qs from "qs";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import "./css/ArticleListContainer.css";
 
-
 const ArticleListContainer = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -46,8 +45,8 @@ const ArticleListContainer = () => {
     <div>
       <ArticleList loading={loading} list={list} />
       <div className="page_button">
-        <div classname = "Left_button" onClick={() => LeftPage(page, limit)}>left</div>
-        <div classname = "Right_button" onClick={() => RightPage(page, limit)}>right</div>
+        <div onClick={() => LeftPage(page, limit)}>left</div>
+        <div onClick={() => RightPage(page, limit)}>right</div>
       </div>
     </div>
   );

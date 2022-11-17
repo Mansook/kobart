@@ -24,6 +24,11 @@ const RecArticleListContainer = () => {
     return <div>로그인이 필요합니다</div>;
   }
   if (loading) return <div>로딩중</div>;
-  else return <ArticleList loading={loading} list={list} />;
+  else
+    return (
+      <div>
+        <ArticleList loading={loading} list={list} />
+      </div>
+    );
 };
 export default RecArticleListContainer;

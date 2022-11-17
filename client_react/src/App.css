@@ -46,9 +46,18 @@
   border: 1px, solid, black;
 }
 .main_content {
-  width: 100%;
-
   position: absolute;
   top: 50px;
-  bottom: 50px;
+  width: 100%;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+}
+.main_content > div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  top: 0;
 }
