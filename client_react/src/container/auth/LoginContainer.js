@@ -22,7 +22,7 @@ const LoginContainer = () => {
     if (userData !== null) {
       if (userData.company.length == 0) {
         navigate("/post/selection", { state: userData });
-      } else navigate("/post?page=1&limit=10");
+      } else navigate("/");
     }
   }, [userData]);
 

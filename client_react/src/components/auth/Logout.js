@@ -6,8 +6,8 @@ const Logout = ({ onClick, ...props }) => {
     <IoMdPower
       onClick={onClick}
       style={{
-        height: "40px",
-        width: "40px",
+        height: "30px",
+        width: "30px",
         cursor: "pointer",
         margin: "8px",
         color: "black",

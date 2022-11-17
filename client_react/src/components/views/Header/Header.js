@@ -4,7 +4,8 @@ import "./header.css";
 const Header = () => {
   return (
     <div className="header">
-      <LogoutContainer />
+      <LogoutContainer 
+      />
     </div>
   );
 };
