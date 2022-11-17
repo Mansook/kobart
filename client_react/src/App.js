@@ -13,6 +13,7 @@ import NavBar from "./components/views/NavBar/NavBar";
 import RecArticleListContainer from "./container/articles/RecArticleListContainer";
 import Home from "./components/home/home";
 import HeaderContainer from "./container/header/HeaderContainer";
+import WriteContainer from "./container/write/WriteContainer";
 
 const App = () => {
   return (
@@ -28,11 +29,13 @@ const App = () => {
           <Route path="/post" element={<ArticleListContainer />} />
           <Route path="/post/selection" element={<SelectFormContainer />} />
           <Route path="/post/:articleId" element={<Article />} />
+
           <Route
             path="/post/recommended"
             element={<RecArticleListContainer />}
           />
           <Route path="/post/recommended/:articleId" element={<Article />} />
+          <Route path="/post/write" element={<WriteContainer />} />
         </Routes>
       </div>
       <div>

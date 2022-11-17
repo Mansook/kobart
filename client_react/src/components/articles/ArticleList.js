@@ -28,7 +28,9 @@ const HeadLine = ({ article }) => {
       <div>{article_name}</div>
       <div className="separate_box">
         <div>기자: {reporter}</div>
-        <div>날짜: {article.Date.split("T", 1)} </div>
+        <div>
+          날짜: {article.Date !== null ? article.Date.split("T", 1) : ""}{" "}
+        </div>
       </div>
     </div>
   );

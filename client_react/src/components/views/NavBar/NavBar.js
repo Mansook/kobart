@@ -56,7 +56,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div className="sub_box_last">
-          <NavLink>
+          <NavLink to="/post/write">
             <IoMdCreate
               style={{
                 height: "40px",
